@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { termContext } from "../Terminal";
 import {
   Cmd,
   HeroContainer,
@@ -10,6 +12,8 @@ import {
 } from "../styles/Welcome.styled";
 
 const Welcome: React.FC = () => {
+  const { setCommand } = useContext(termContext);
+
   return (
     <HeroContainer data-testid="welcome">
       <div className="info-section">
@@ -35,23 +39,24 @@ ____    ____  ___       _______       ___   ____    ____
             
           </PreNameMobile>
         </PreWrapper>
-        <div>Welcome to my terminal portfolio. (Version 1.0.0)</div>
+        <div>Welcome to my terminal portfolio. (Version 1.0.1)</div>
         <Seperator>----</Seperator>
         <div>
           This project's source code can be found in this project's{" "}
-          <Link href="#">
+          <Link href="https://github.com/lucifer47C/Terminal-Portfolio">
             GitHub repo
           </Link>
           .
         </div>
         <Seperator>----</Seperator>
         <div>
-          For a list of available commands, type `<Cmd>help</Cmd>`.
+          For a list of available commands, type{" "}
+          <Cmd onClick={() => setCommand && setCommand("help")}>help</Cmd>.
         </div>
       </div>
       <div className="illu-section">
         <PreImg>
-        {`                     
+          {`                     
                                                                                                     --                                    
                                                                                                     **   :                                
                                                                                      =#######*-     *#=  *.                               
